@@ -10,6 +10,13 @@ describe('Cadastrar Produtos', () => {
         cy.get('[data-testid="descricao"]').type('TV LG 4k QNED')
         cy.get('[data-testid="quantity"]').type('42')
         cy.get('[data-testid="cadastarProdutos"]').click()
-
+    })
+    it('Excluir Produtos', () => {
+        cy.visit('https://front.serverest.dev/login')
+        cy.get('[data-testid="email"]').type('stark@email.com')
+        cy.get('[data-testid="senha"]').type('@tony123@')
+        cy.get('[data-testid="entrar"]').click()
+        cy.get('[data-testid="listar-produtos"]').click()
+        cy.get(':nth-child(1) > :nth-child(6) > .row > .btn-danger').click()
     })
 })
