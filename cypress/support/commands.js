@@ -1,3 +1,17 @@
+Cypress.Commands.add("login", (email, password) => {
+  cy.request({
+    method: "POST",
+    url: "https://serverest.dev/login",
+    body: {
+      email: email,
+      password: password,
+    }
+  }).then((response) => {
+    window.localStorage.setItem('serverest/userToken', response.body.authorization)
+  })
+});
+
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
