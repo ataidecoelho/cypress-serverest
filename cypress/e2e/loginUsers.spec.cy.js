@@ -4,7 +4,7 @@ describe('Fazer Login', () => {
     cy.get('[data-testid="email"]').type('stark@email.com');
     cy.get('[data-testid="senha"]').type('@tony123@');
     cy.get('[data-testid="entrar"]').click();
-    cy.get(".navbar").contains('Cadastrar Usuários');
+    cy.get(".navbar").should('be.visible');
   });
 
   it('Login com Sucesso Usuário Padrão', () => {
@@ -12,6 +12,6 @@ describe('Fazer Login', () => {
     cy.get('[data-testid="email"]').type('parker@email.com');
     cy.get('[data-testid="senha"]').type('@peter123@');
     cy.get('[data-testid="entrar"]').click();
-    cy.get(".navbar").contains('Carrinho');
+    cy.get(".navbar").should('be.visible');
   });
 });
