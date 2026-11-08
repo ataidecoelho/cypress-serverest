@@ -11,8 +11,11 @@ describe("Tamplate spec", () => {
     cy.get('[data-testid="cadastarProdutos"]').click();
     cy.get('h1').contains('Lista dos Produtos')
     cy.get('tbody').should('be.visible')
-    cy.get('tr').each(($row) => {
-      cy.log($row.find('td').eq(0).text())
+    cy.get('tr').each(($row) => {      
+      if($row.find('td').eq(0).text() === produto) {
+        $row.find('td').eq(5).children('div').children('.btn-danger').click()
+      }
     })
+    cy.get('td').should('not.include.text', produto)
   });
 });
