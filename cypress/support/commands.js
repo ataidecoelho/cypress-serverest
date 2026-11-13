@@ -11,6 +11,22 @@ Cypress.Commands.add("login", (email, password) => {
   })
 });
 
+Cypress.Commands.add("productRegistration", (name, price, description, quantity) => {
+      cy.request({
+        method: "POST",
+        url: "https://serverest.dev/produtos",
+        body: {
+          nome: name,
+          preco: price,
+          descricao: description,
+          quantidade: quantity,
+        },
+        headers: {
+          Authorization: window.localStorage.getItem('serverest/userToken'), 
+        }
+      })
+})
+
 
 // ***********************************************
 // This example commands.js shows you how to
